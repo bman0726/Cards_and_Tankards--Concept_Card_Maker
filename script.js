@@ -193,7 +193,7 @@ let selectedSubtype = customSubtype.value || subtype.value;
 if(selectedSubtype && selectedSubtype !== "-Generic-"){
 
     typeText.innerHTML =
-    selectedSubtype + " " + cardType.value;
+    selectedSubtype;
 
 }
 else{
