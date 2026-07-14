@@ -11,17 +11,17 @@ const customSubtype = document.getElementById("customSubtype");
 const subtypeOptions = {
 
     Creature: [
-        "Pirate",
-        "Undead",
-        "Underling",
-        "Mercenary",
-        "Nomad",
+        "Pirate Creature",
+        "Undead Creature",
+        "Underling Creature",
+        "Mercenary Creature",
+        "Nomad Creature",
         "Custom"
     ],
 
     Spell: [
-        "Enchantment",
-        "Ritual",
+        "Enchantment Spell",
+        "Ritual Spell",
         "Custom"
     ]
 
