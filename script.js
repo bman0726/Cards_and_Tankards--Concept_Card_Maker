@@ -103,6 +103,7 @@ return text.replace(
     "<b><u>$1</u></b>"
 );
 
+}
 
 
 
