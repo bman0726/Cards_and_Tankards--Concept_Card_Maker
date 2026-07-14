@@ -242,7 +242,7 @@ subtype.onchange=function(){
 
     if(subtype.value==="Custom"){
 
-        customSubtypeContainer.style.display="block";
+        customSubtypeContainer.style.display="flex";
 
     }
     else{
