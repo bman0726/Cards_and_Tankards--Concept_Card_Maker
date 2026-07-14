@@ -255,7 +255,7 @@ subtype.onchange=function(){
 
 };
 
-
+customSubtype.oninput = updateText;
 
 cardType.onchange=function(){
 
