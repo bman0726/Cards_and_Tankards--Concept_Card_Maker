@@ -165,3 +165,101 @@ link.click();
 
 
 }
+
+const subtype=document.getElementById("subtype");
+const customSubtype=document.getElementById("customSubtype");
+
+const creatureStats=document.getElementById("creatureStats");
+const relicStats=document.getElementById("relicStats");
+
+const subtypeOptions={
+
+Creature:[
+"Pirate",
+"Undead",
+"Underling",
+"Beast",
+"Human",
+"Dragon"
+],
+
+Spell:[
+"Enchant",
+"Ritual"
+],
+
+Relic:[
+"Weapon",
+"Artifact",
+"Armor"
+]
+
+};
+
+
+
+function updateCardTypeUI(){
+
+
+let type=cardType.value;
+
+
+// clear dropdown
+
+subtype.innerHTML=
+'<option value="">Select Subtype</option>';
+
+
+// add correct options
+
+subtypeOptions[type].forEach(item=>{
+
+let option=document.createElement("option");
+
+option.value=item;
+
+option.text=item;
+
+subtype.appendChild(option);
+
+});
+
+
+
+// hide everything
+
+creatureStats.style.display="none";
+
+relicStats.style.display="none";
+
+
+
+// show correct fields
+
+if(type==="Creature"){
+
+creatureStats.style.display="block";
+
+}
+
+if(type==="Relic"){
+
+relicStats.style.display="block";
+
+}
+
+
+}
+
+
+cardType.onchange=function(){
+
+updateLayers();
+
+updateCardTypeUI();
+
+};
+
+
+
+updateCardTypeUI();
