@@ -187,8 +187,21 @@ manaText.innerHTML=mana.value;
 
 nameText.innerHTML=name.value;
 
-typeText.innerHTML=
-customSubtype.value || subtype.value;
+let selectedSubtype = customSubtype.value || subtype.value;
+
+
+if(selectedSubtype && selectedSubtype !== "-Generic-"){
+
+    typeText.innerHTML =
+    selectedSubtype + " " + cardType.value;
+
+}
+else{
+
+    typeText.innerHTML =
+    cardType.value;
+
+}
 
 
 abilityText.innerHTML=formatText(
