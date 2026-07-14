@@ -73,7 +73,6 @@ textarea {
 
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 
@@ -121,17 +120,22 @@ font-size:22px;
 
 
 #attackText {
+    position: absolute;
 
-position:absolute;
+    left: 67px;
+    top: 877px;
 
-bottom:40px;
-left:80px;
+    width: 145px;
+    height: 145px;
 
-font-size:40px;
-font-weight:bold;
+    text-align: center;
 
+    font-size: 40px;
+    font-weight: bold;
+
+    overflow: hidden;
+    white-space: nowrap;
 }
-
 
 
 #healthText {
