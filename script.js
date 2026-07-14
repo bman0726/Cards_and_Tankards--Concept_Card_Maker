@@ -251,6 +251,8 @@ subtype.onchange=function(){
 
     }
 
+    updateText();
+
 };
 
 
