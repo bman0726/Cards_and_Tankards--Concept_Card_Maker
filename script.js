@@ -80,6 +80,7 @@ rarityLayer.src=rarityPaths[rarity.value];
 
 typeLayer.src=typePaths[cardType.value];
 
+updateText();
 
 }
 
