@@ -2,6 +2,29 @@
 const factionLayer=document.getElementById("factionLayer");
 const rarityLayer=document.getElementById("rarityLayer");
 const typeLayer=document.getElementById("typeLayer");
+const creatureStats = document.getElementById("creatureStats");
+const relicStats = document.getElementById("relicStats");
+const subtype = document.getElementById("subtype");
+
+
+const subtypeOptions = {
+
+    Creature: [
+        "Pirate",
+        "Undead",
+        "Underling",
+        "Mercenary",
+        "Nomad",
+        "Custom"
+    ],
+
+    Spell: [
+        "Enchantment",
+        "Ritual",
+        "Custom"
+    ]
+
+};
 
 
 
@@ -169,48 +192,6 @@ link.click();
 }
 
 
-// add correct options
-
-subtypeOptions[type].forEach(item=>{
-
-let option=document.createElement("option");
-
-option.value=item;
-
-option.text=item;
-
-subtype.appendChild(option);
-
-});
-
-
-
-// hide everything
-
-creatureStats.style.display="none";
-
-relicStats.style.display="none";
-
-
-
-// show correct fields
-
-if(type==="Creature"){
-
-creatureStats.style.display="block";
-
-}
-
-if(type==="Relic"){
-
-relicStats.style.display="block";
-
-}
-
-
-}
-
-
 cardType.onchange=function(){
 
 updateLayers();
@@ -225,60 +206,51 @@ updateCardTypeUI();
 
 // Dynamic fields
 
-const creatureStats = document.getElementById("creatureStats");
-const relicStats = document.getElementById("relicStats");
-const subtype = document.getElementById("subtype");
-
-
-const subtypeOptions = {
-
-    Creature: [
-        "Pirate",
-        "Undead",
-        "Underling",
-        "Mercenary",
-        "Nomad",
-        "Custom"
-    ],
-
-    Spell: [
-        "Enchantment",
-        "Ritual",
-        "Custom"
-    ]
-
-};
-
-
 
 function updateCardTypeUI(){
 
     let type = cardType.value;
 
 
-    // Hide all stats first
-    creatureStats.style.display = "none";
-    relicStats.style.display = "none";
+    creatureStats.style.display="none";
+    relicStats.style.display="none";
 
 
-    // Show correct stats
-    if(type === "Creature"){
-        creatureStats.style.display = "block";
+    if(type==="Creature"){
+        creatureStats.style.display="block";
     }
 
 
-    if(type === "Relic"){
-        relicStats.style.display = "block";
+    if(type==="Relic"){
+        relicStats.style.display="block";
     }
 
-    
-    const customSubtypeContainer =
-document.getElementById("customSubtypeContainer");
+
+    subtype.innerHTML="";
 
 
-subtype.addEventListener("change", ()=>{
+    if(subtypeOptions[type]){
 
-    if(subtype.value === "Custom"){
+        subtypeOptions[type].forEach(item=>{
+
+            let option=document.createElement("option");
+
+            option.value=item;
+            option.textContent=item;
+
+            subtype.appendChild(option);
+
+        });
+
+    }
+
+}
+
+
+
+subtype.onchange=function(){
+
+    if(subtype.value==="Custom"){
 
         customSubtypeContainer.style.display="block";
 
@@ -290,36 +262,17 @@ subtype.addEventListener("change", ()=>{
 
     }
 
-});
-
-
-    // Update subtype dropdown
-
-    subtype.innerHTML = "";
-
-    subtypeOptions[type].forEach(item=>{
-
-        let option = document.createElement("option");
-
-        option.value = item;
-        option.textContent = item;
-
-        subtype.appendChild(option);
-
-    });
-
-}
+};
 
 
 
-cardType.addEventListener("change", ()=>{
+cardType.onchange=function(){
 
     updateLayers();
     updateCardTypeUI();
 
-});
+};
 
 
-// Run once on page load
 
 updateCardTypeUI();
