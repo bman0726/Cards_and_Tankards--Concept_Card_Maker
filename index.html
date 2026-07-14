@@ -1,74 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cards & Tankards Card Creator</title>
-
+    <title>Cards & Tankards Concept Card Maker</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="editor">
+<h1>Cards & Tankards Concept Card Maker</h1>
 
-    <div id="controls">
+<div class="container">
 
-        <h2>Card Creator</h2>
+<div class="controls">
 
-        <label>Artwork</label>
-        <input type="file" id="artUpload" accept="image/*">
+<h2>Card Image</h2>
+<input type="file" id="cardImage" accept="image/*">
 
-        <label>Name</label>
-        <input id="nameInput">
 
-        <label>Mana</label>
-        <input id="manaInput" type="number" value="0">
+<h2>Faction</h2>
+<select id="faction">
+    <option value="Neutral">Neutral</option>
+    <option value="AO">Augur Order</option>
+    <option value="PG">Plundering Guild</option>
+    <option value="DM">Dungeon Master</option>
+    <option value="WH">Wild Horde</option>
+</select>
 
-        <label>Attack</label>
-        <input id="attackInput" type="number" value="0">
 
-        <label>Health</label>
-        <input id="healthInput" type="number" value="0">
+<h2>Rarity</h2>
+<select id="rarity">
+    <option value="Common">Common</option>
+    <option value="Uncommon">Uncommon</option>
+    <option value="Rare">Rare</option>
+    <option value="Legendary">Legendary</option>
+</select>
 
-        <label>Creature Type</label>
-        <input id="typeInput">
 
-        <label>Ability</label>
-        <textarea id="abilityInput"></textarea>
+<h2>Card Type</h2>
+<select id="cardType">
+    <option value="Creature">Creature</option>
+    <option value="Spell">Spell</option>
+    <option value="Relic">Relic</option>
+</select>
 
-    </div>
 
-    <div id="preview">
 
-        <div id="card">
+<h2>Text</h2>
 
-            <img id="art" src="images/placeholder.png">
+<input id="mana" placeholder="Mana Cost">
 
-            <img id="base" src="images/base.png">
+<input id="name" placeholder="Card Name">
 
-            <img id="rarity">
+<input id="creatureType" placeholder="Creature Type">
 
-            <img id="faction">
+<input id="attack" placeholder="Attack">
 
-            <img id="overlay">
+<input id="health" placeholder="Health">
 
-            <div id="mana">0</div>
+<input id="sparks" placeholder="Sparks">
 
-            <div id="name">Card Name</div>
 
-            <div id="type">Creature</div>
+<textarea id="ability" placeholder="Ability Text (*Entrance:* works)"></textarea>
 
-            <div id="attack">0</div>
 
-            <div id="health">0</div>
+<button onclick="downloadCard()">
+Export Card
+</button>
 
-            <div id="ability"></div>
-
-        </div>
-
-    </div>
 
 </div>
+
+
+
+
+<div id="card">
+
+<img id="art" src="Images/Base '?' Image.png">
+
+<img class="layer" src="Images/Card Base Overlay.png">
+
+<img id="factionLayer" class="layer">
+
+<img id="rarityLayer" class="layer">
+
+<img id="typeLayer" class="layer">
+
+
+<div id="manaText"></div>
+<div id="nameText"></div>
+<div id="typeText"></div>
+<div id="abilityText"></div>
+
+<div id="attackText"></div>
+<div id="healthText"></div>
+<div id="sparkText"></div>
+
+
+</div>
+
+
+</div>
+
 
 <script src="script.js"></script>
 
