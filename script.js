@@ -5,7 +5,8 @@ const typeLayer=document.getElementById("typeLayer");
 const creatureStats = document.getElementById("creatureStats");
 const relicStats = document.getElementById("relicStats");
 const subtype = document.getElementById("subtype");
-
+const customSubtypeContainer = document.getElementById("customSubtypeContainer");
+const customSubtype = document.getElementById("customSubtype");
 
 const subtypeOptions = {
 
