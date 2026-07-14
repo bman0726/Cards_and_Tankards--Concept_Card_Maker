@@ -179,20 +179,13 @@ Creature:[
 "Pirate",
 "Undead",
 "Underling",
-"Beast",
-"Human",
-"Dragon"
+"Mercenary",
+"Nomad"
 ],
 
 Spell:[
-"Enchant",
+"Enchantment",
 "Ritual"
-],
-
-Relic:[
-"Weapon",
-"Artifact",
-"Armor"
 ]
 
 };
@@ -278,19 +271,13 @@ const subtypeOptions = {
         "Pirate",
         "Undead",
         "Underling",
-        "Beast",
-        "Human"
+        "Mercenary",
+        "Nomad"
     ],
 
     Spell: [
         "Enchantment",
         "Ritual"
-    ],
-
-    Relic: [
-        "Weapon",
-        "Armor",
-        "Artifact"
     ]
 
 };
