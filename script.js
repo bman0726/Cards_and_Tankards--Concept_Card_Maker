@@ -98,10 +98,10 @@ reader.readAsDataURL(this.files[0]);
 
 function formatText(text){
 
-return text.replace(/\*(.*?)\*/g,
-"<b><u>$1</u></b>");
-
-}
+return text.replace(
+    /\*(.*?)\*/g,
+    "<b><u>$1</u></b>"
+);
 
 
 
@@ -169,31 +169,6 @@ link.click();
 
 const subtype=document.getElementById("subtype");
 const customSubtype=document.getElementById("customSubtype");
-
-const creatureStats=document.getElementById("creatureStats");
-const relicStats=document.getElementById("relicStats");
-
-const subtypeOptions={
-
-Creature:[
-"Pirate",
-"Undead",
-"Underling",
-"Mercenary",
-"Nomad"
-],
-
-Spell:[
-"Enchantment",
-"Ritual"
-]
-
-};
-
-
-
-function updateCardTypeUI(){
-
 
 let type=cardType.value;
 
@@ -272,12 +247,14 @@ const subtypeOptions = {
         "Undead",
         "Underling",
         "Mercenary",
-        "Nomad"
+        "Nomad",
+        "Custom"
     ],
 
     Spell: [
         "Enchantment",
-        "Ritual"
+        "Ritual",
+        "Custom"
     ]
 
 };
@@ -304,6 +281,26 @@ function updateCardTypeUI(){
         relicStats.style.display = "block";
     }
 
+    
+    const customSubtypeContainer =
+document.getElementById("customSubtypeContainer");
+
+
+subtype.addEventListener("change", ()=>{
+
+    if(subtype.value === "Custom"){
+
+        customSubtypeContainer.style.display="block";
+
+    }
+    else{
+
+        customSubtypeContainer.style.display="none";
+        customSubtype.value="";
+
+    }
+
+});
 
 
     // Update subtype dropdown
