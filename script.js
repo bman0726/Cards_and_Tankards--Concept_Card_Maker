@@ -171,7 +171,7 @@ keywords.forEach(keyword => {
 
     text = text.replace(
         regex,
-        "<u>$&</u>"
+        "<u>" + keyword + "</u>"
     );
 
 });
