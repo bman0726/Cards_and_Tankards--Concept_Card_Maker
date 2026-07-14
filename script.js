@@ -266,5 +266,6 @@ cardType.onchange=function(){
 };
 
 
-
+updateLayers();
 updateCardTypeUI();
+updateText();
