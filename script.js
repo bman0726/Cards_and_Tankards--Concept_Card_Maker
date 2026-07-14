@@ -192,17 +192,6 @@ link.click();
 }
 
 
-cardType.onchange=function(){
-
-updateLayers();
-
-updateCardTypeUI();
-
-};
-
-updateCardTypeUI();
-
-
 
 // Dynamic fields
 
