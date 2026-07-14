@@ -45,17 +45,22 @@ const keywords = [
 const subtypeOptions = {
 
     Creature: [
-        "Pirate",
-        "Undead",
-        "Underling",
-        "Mercenary",
-        "Nomad",
-        "Custom"
+        "-Generic-",
+        "Crusader Creature",
+        "Elemental Creature",
+        "Mercenary Creature",
+        "Ooze Creature",
+        "Pirate Creature",
+        "Undead Creature",
+        "Underling Creature",
+        "-Custom-"
     ],
 
     Spell: [
-        "Enchantment",
-        "Ritual",
+        "-Generic-",
+        "Contract Spell",
+        "Enchantment Spell",
+        "Ritual Spell",
         "Custom"
     ]
 
