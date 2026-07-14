@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards & Tankards Card Creator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="editor">
+
+    <div id="controls">
+
+        <h2>Card Creator</h2>
+
+        <label>Artwork</label>
+        <input type="file" id="artUpload" accept="image/*">
+
+        <label>Name</label>
+        <input id="nameInput">
+
+        <label>Mana</label>
+        <input id="manaInput" type="number" value="0">
+
+        <label>Attack</label>
+        <input id="attackInput" type="number" value="0">
+
+        <label>Health</label>
+        <input id="healthInput" type="number" value="0">
+
+        <label>Creature Type</label>
+        <input id="typeInput">
+
+        <label>Ability</label>
+        <textarea id="abilityInput"></textarea>
+
+    </div>
+
+    <div id="preview">
+
+        <div id="card">
+
+            <img id="art" src="images/placeholder.png">
+
+            <img id="base" src="images/base.png">
+
+            <img id="rarity">
+
+            <img id="faction">
+
+            <img id="overlay">
+
+            <div id="mana">0</div>
+
+            <div id="name">Card Name</div>
+
+            <div id="type">Creature</div>
+
+            <div id="attack">0</div>
+
+            <div id="health">0</div>
+
+            <div id="ability"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
