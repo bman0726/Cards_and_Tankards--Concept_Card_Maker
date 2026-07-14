@@ -8,6 +8,40 @@ const subtype = document.getElementById("subtype");
 const customSubtypeContainer = document.getElementById("customSubtypeContainer");
 const customSubtype = document.getElementById("customSubtype");
 
+const keywords = [
+    "Activate",
+    "Aftermath",
+    "Condition",
+    "Deathblow",
+    "Devotion",
+    "Discarded",
+    "Duel",
+    "Enhance",
+    "Enrage",
+    "Entrance",
+    "Fetch",
+    "Innate",
+    "Last Word",
+    "Mastery",
+    "Mobilize",
+    "Outnumbered",
+    "Plunder",
+    "Prepare",
+    "Shift",
+    "Amped",
+    "Armored",
+    "Backlash",
+    "Flight",
+    "Loophole",
+    "Multiblocker",
+    "Pacifist",
+    "Quickstrike",
+    "Ranged",
+    "Restless",
+    "Taunt",
+    "Unyielding"
+];
+
 const subtypeOptions = {
 
     Creature: [
@@ -123,13 +157,27 @@ reader.readAsDataURL(this.files[0]);
 
 function formatText(text){
 
-return text.replace(
+text = text.replace(
     /\*(.*?)\*/g,
     "<b><u>$1</u></b>"
 );
 
-}
+keywords.forEach(keyword => {
 
+    let regex = new RegExp(
+        "\\b" + keyword + "\\b",
+        "gi"
+    );
+
+    text = text.replace(
+        regex,
+        "<u>$&</u>"
+    );
+
+});
+
+return text;
+}
 
 
 function updateText(){
