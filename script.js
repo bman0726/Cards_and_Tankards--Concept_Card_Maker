@@ -185,7 +185,7 @@ function updateText(){
 
 manaText.innerHTML=mana.value;
 
-nameText.innerHTML=name.value;
+nameText.innerHTML=name.value || "Unnamed";
 
 let selectedSubtype = customSubtype.value || subtype.value;
 
