@@ -113,7 +113,8 @@ manaText.innerHTML=mana.value;
 
 nameText.innerHTML=name.value;
 
-typeText.innerHTML=creatureType.value;
+typeText.innerHTML=
+customSubtype.value || subtype.value;
 
 
 abilityText.innerHTML=formatText(
