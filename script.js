@@ -168,17 +168,6 @@ link.click();
 
 }
 
-const subtype=document.getElementById("subtype");
-const customSubtype=document.getElementById("customSubtype");
-
-let type=cardType.value;
-
-
-// clear dropdown
-
-subtype.innerHTML=
-'<option value="">Select Subtype</option>';
-
 
 // add correct options
 
