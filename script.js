@@ -261,6 +261,91 @@ updateCardTypeUI();
 
 };
 
+updateCardTypeUI();
 
+
+
+// Dynamic fields
+
+const creatureStats = document.getElementById("creatureStats");
+const relicStats = document.getElementById("relicStats");
+const subtype = document.getElementById("subtype");
+
+
+const subtypeOptions = {
+
+    Creature: [
+        "Pirate",
+        "Undead",
+        "Underling",
+        "Beast",
+        "Human"
+    ],
+
+    Spell: [
+        "Enchantment",
+        "Ritual"
+    ],
+
+    Relic: [
+        "Weapon",
+        "Armor",
+        "Artifact"
+    ]
+
+};
+
+
+
+function updateCardTypeUI(){
+
+    let type = cardType.value;
+
+
+    // Hide all stats first
+    creatureStats.style.display = "none";
+    relicStats.style.display = "none";
+
+
+    // Show correct stats
+    if(type === "Creature"){
+        creatureStats.style.display = "block";
+    }
+
+
+    if(type === "Relic"){
+        relicStats.style.display = "block";
+    }
+
+
+
+    // Update subtype dropdown
+
+    subtype.innerHTML = "";
+
+    subtypeOptions[type].forEach(item=>{
+
+        let option = document.createElement("option");
+
+        option.value = item;
+        option.textContent = item;
+
+        subtype.appendChild(option);
+
+    });
+
+}
+
+
+
+cardType.addEventListener("change", ()=>{
+
+    updateLayers();
+    updateCardTypeUI();
+
+});
+
+
+// Run once on page load
 
 updateCardTypeUI();
