@@ -8,6 +8,8 @@ const subtype = document.getElementById("subtype");
 const customSubtypeContainer = document.getElementById("customSubtypeContainer");
 const customSubtype = document.getElementById("customSubtype");
 const nameInput = document.getElementById("name");
+const attributeContainer = document.getElementById("attributeContainer");
+const checkboxContainer = document.getElementById("attributeCheckboxes");
 
 const keywords = [
     "Activate",
@@ -50,6 +52,26 @@ const keywords = [
     "Unyielding"
 ];
 
+const attributes = [
+    "Amped",
+    "Armored",
+    "Flight",
+    "Restless",
+    "Unyielding",
+    "Doomed",
+    "Ranged",
+    "Quickstrike",
+    "Pacifist",
+    "Backlash",
+    "Taunt",
+    "Multiblocker",
+    "Loophole"
+]
+
+const spellAttributes = [
+    "Doomed"
+];
+
 const subtypeOptions = {
 
     Creature: [
@@ -57,7 +79,6 @@ const subtypeOptions = {
         "Crusader Creature",
         "Elemental Creature",
         "Mercenary Creature",
-        "Nomad Creature",
         "Ooze Creature",
         "Pirate Creature",
         "Undead Creature",
@@ -265,22 +286,48 @@ attackText.innerHTML = attackValue;
 healthText.innerHTML = healthValue;
 sparkText.innerHTML = sparkValue;
 
-
 }
 
 
-document.querySelectorAll("input,textarea")
-.forEach(e=>{
+function createAttributeCheckboxes(){
 
-    e.addEventListener("input", updateText);
-    e.addEventListener("change", updateText);
+    checkboxContainer.innerHTML = "";
 
-});
+    let type = cardType.value;
+
+    let availableAttributes = [];
+
+    if(type === "Creature"){
+        availableAttributes = attributes;
+    }
+
+    else if(type === "Spell"){
+        availableAttributes = spellAttributes;
+    }
+
+    else if(type === "Relic"){
+        availableAttributes = [];
+    }
 
 
+    availableAttributes.forEach(attribute=>{
 
+        let label=document.createElement("label");
+        let checkbox=document.createElement("input");
 
+        checkbox.type="checkbox";
+        checkbox.value=attribute;
 
+        checkbox.onchange=updateAttributes;
+
+        label.append(attribute);
+        label.appendChild(checkbox);
+
+        checkboxContainer.appendChild(label);
+
+    });
+
+}
 
 function downloadCard(){
 
@@ -303,8 +350,35 @@ link.click();
 
 }
 
+function updateAttributes(){
+
+    attributeContainer.innerHTML="";
+
+    let selected = Array.from(
+        document.querySelectorAll(
+            "#attributeCheckboxes input:checked"
+        )
+    );
+
+    for(let i = selected.length - 1; i >= 0; i--){
+
+        let img=document.createElement("img");
+
+        img.src =
+        "Images/Attributes/" +
+        selected[i].value +
+        ".png";
+
+        img.className="attributeIcon";
+
+        attributeContainer.appendChild(img);
+    }
+
+}
+
 
 function updateCardTypeUI(){
+    attributeContainer.classList.remove("spellAttributes");
 
     let type = cardType.value;
 
@@ -331,6 +405,10 @@ function updateCardTypeUI(){
         sparkText.style.display="flex";
     }
 
+    if(type==="Spell"){
+        attributeContainer.classList.add("spellAttributes");
+    }
+
 
     subtype.innerHTML="";
 
@@ -355,7 +433,6 @@ function updateCardTypeUI(){
 
         });
 
-        // Default to the first subtype (usually -Generic-)
         subtype.selectedIndex = 0;
 
         customSubtypeContainer.style.display = "none";
@@ -399,11 +476,23 @@ cardType.onchange=function(){
 
     updateLayers();
     updateCardTypeUI();
+    createAttributeCheckboxes();
+    updateAttributes();
     updateText();
-
 };
 
 
+document.querySelectorAll("input,textarea")
+.forEach(e=>{
+
+    e.addEventListener("input", updateText);
+    e.addEventListener("change", updateText);
+
+});
+
+
+createAttributeCheckboxes();
 updateLayers();
 updateCardTypeUI();
+updateAttributes();
 updateText();
