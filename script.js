@@ -231,7 +231,8 @@ sparkText.innerHTML=sparks.value;
 document.querySelectorAll("input,textarea")
 .forEach(e=>{
 
-e.oninput=updateText;
+    e.addEventListener("input", updateText);
+    e.addEventListener("change", updateText);
 
 });
 
