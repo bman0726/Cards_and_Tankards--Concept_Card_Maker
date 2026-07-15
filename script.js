@@ -294,6 +294,9 @@ function updateCardTypeUI(){
     creatureStats.style.display="none";
     relicStats.style.display="none";
 
+    sparkText.style.display="none";
+    healthText.style.display="block";
+
 
     if(type==="Creature"){
         creatureStats.style.display="block";
@@ -302,6 +305,9 @@ function updateCardTypeUI(){
 
     if(type==="Relic"){
         relicStats.style.display="block";
+
+        sparkText.style.display="block";
+        healthText.style.display="none";
     }
 
 
