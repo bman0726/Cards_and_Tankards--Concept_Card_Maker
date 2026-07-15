@@ -166,19 +166,41 @@ textarea {
 }
 
 
-#abilityText {
+#abilityText{
+    position:absolute;
 
-position:absolute;
+    left:250px;
+    top:515px;
 
-bottom:100px;
+    width:360px;
+    height:170px;
 
-width:80%;
-left:10%;
+    transform:translate(-50%,-50%);
 
-font-size:22px;
+    font-family:"Asap", sans-serif;
+    font-size:22px;
+    font-weight:bold;
 
+    color:white;
+
+    text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+
+    text-align:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    padding:8px;
+
+    box-sizing:border-box;
 }
-
 
 
 #attackText {
