@@ -167,6 +167,7 @@ textarea {
 
 
 #abilityText {
+    border: 2px solid red;
     position:absolute;
 
     left:250px;
