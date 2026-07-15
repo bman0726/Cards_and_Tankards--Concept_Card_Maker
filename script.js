@@ -62,7 +62,7 @@ const subtypeOptions = {
         "Contract Spell",
         "Enchantment Spell",
         "Ritual Spell",
-        "Custom"
+        "-Custom-"
     ],
    
     Relic: []
