@@ -182,21 +182,28 @@ font-size:22px;
 
 
 #attackText {
-    position: absolute;
+    position:absolute;
 
-    left: 67px;
-    top: 877px;
+    left:90px;
+    top:410px;
 
-    width: 145px;
-    height: 145px;
+    transform:translate(-50%, -50%);
 
-    text-align: center;
+    font-family:"Days Sans Black", sans-serif;
+    font-size:45px;
+    font-weight:bold;
 
-    font-size: 40px;
-    font-weight: bold;
+    color:white;
 
-    overflow: hidden;
-    white-space: nowrap;
+    text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 
