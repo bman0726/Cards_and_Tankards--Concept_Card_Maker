@@ -282,10 +282,6 @@ link.click();
 }
 
 
-
-// Dynamic fields
-
-
 function updateCardTypeUI(){
 
     let type = cardType.value;
@@ -294,20 +290,23 @@ function updateCardTypeUI(){
     creatureStats.style.display="none";
     relicStats.style.display="none";
 
+    attackText.style.display="none";
+    healthText.style.display="none";
     sparkText.style.display="none";
-    healthText.style.display="block";
 
 
     if(type==="Creature"){
         creatureStats.style.display="block";
+
+        attackText.style.display="flex";
+        healthText.style.display="flex";
     }
 
 
     if(type==="Relic"){
         relicStats.style.display="block";
 
-        sparkText.style.display="block";
-        healthText.style.display="none";
+        sparkText.style.display="flex";
     }
 
 
