@@ -7,6 +7,7 @@ const relicStats = document.getElementById("relicStats");
 const subtype = document.getElementById("subtype");
 const customSubtypeContainer = document.getElementById("customSubtypeContainer");
 const customSubtype = document.getElementById("customSubtype");
+const nameInput = document.getElementById("name");
 
 const keywords = [
     "Activate",
@@ -192,7 +193,7 @@ function updateText(){
 
 manaText.innerHTML=mana.value;
 
-nameText.innerHTML=name.value || "Unnamed";
+nameText.innerHTML=nameInput.value || "Unnamed";
 
 let selectedSubtype = customSubtype.value || subtype.value;
 
