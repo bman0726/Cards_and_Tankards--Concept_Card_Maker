@@ -217,9 +217,7 @@ else{
 }
 
 
-abilityText.innerHTML=formatText(
-ability.value
-);
+abilityContent.innerHTML=formatText(ability.value);
 
 
 
