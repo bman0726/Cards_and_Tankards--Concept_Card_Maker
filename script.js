@@ -62,7 +62,9 @@ const subtypeOptions = {
         "Enchantment Spell",
         "Ritual Spell",
         "Custom"
-    ]
+    ],
+   
+    Relic: []
 
 };
 
@@ -286,7 +288,7 @@ function updateCardTypeUI(){
     subtype.innerHTML="";
 
 
-    if(subtypeOptions[type]){
+    if(subtypeOptions[type] && subtypeOptions[type].length > 0){
 
         subtypeOptions[type].forEach(item=>{
 
