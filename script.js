@@ -334,7 +334,7 @@ function updateCardTypeUI(){
 
 subtype.onchange=function(){
 
-    if(subtype.value==="Custom"){
+    if(subtype.value==="-Custom-"){
 
         customSubtypeContainer.style.display="flex";
 
