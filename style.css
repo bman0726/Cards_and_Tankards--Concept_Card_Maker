@@ -65,6 +65,45 @@ textarea {
 
 }
 
+.attributeIcon{
+    width:40px;
+    height:40px;
+}
+
+#attributeCheckboxes{
+    display:grid;
+    grid-template-columns: 150px 25px;
+    gap:8px 5px;
+}
+
+#attributeCheckboxes label{
+    display:contents;
+}
+
+#attributeContainer{
+    position:absolute;
+
+    left:105px;
+    bottom:285px;
+
+    width:220px;
+    height:120px;
+
+    display:grid;
+    grid-template-columns: repeat(5, 40px);
+
+    grid-auto-rows:40px;
+
+    gap: 4px;
+
+    align-content: end;
+    justify-content: start;
+}
+
+#attributeContainer.spellAttributes{
+    left: 27px;
+    bottom:285px;
+}
 
 #manaText {
     position: absolute;
