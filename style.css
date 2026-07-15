@@ -1,5 +1,9 @@
-<link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
 
+@font-face {
+    font-family: "Days Sans Black";
+    src: url("Fonts/DaysSansBlack.otf");
+
+}
 body {
     background:#222;
     color:white;
