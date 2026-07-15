@@ -223,15 +223,28 @@ ability.value
 
 
 
-attackText.innerHTML=attack.value;
+let attackValue = parseInt(attack.value) || 0;
+let healthValue = parseInt(health.value) || 0;
+let sparkValue = parseInt(sparks.value) || 0;
 
-healthText.innerHTML=health.value;
+if(attackValue > 99){
+    attackValue = 99;
+}
 
-sparkText.innerHTML=sparks.value;
+if(healthValue > 99){
+    healthValue = 99;
+}
+
+if(sparkValue > 99){
+    sparkValue = 99;
+}
+
+attackText.innerHTML = attackValue;
+healthText.innerHTML = healthValue;
+sparkText.innerHTML = sparkValue;
 
 
 }
-
 
 
 document.querySelectorAll("input,textarea")
