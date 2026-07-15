@@ -3,6 +3,10 @@
     font-family: "Days Sans Black";
     src: url("fonts/Days Sans Black.otf");
 
+@font-face {
+    font-family: "Asap";
+    src: url("fonts/asap.bold.otf");
+
 }
 body {
     background:#222;
@@ -95,21 +99,38 @@ textarea {
     white-space: nowrap;
 }
 
-
-
 #nameText {
+    position: absolute;
 
-position:absolute;
+    left: 64px;
+    top: 250px;
 
-top:100px;
-width:100%;
+    width: 350px;
+    height: 50px;
 
-font-size:32px;
-font-weight:bold;
+    transform: translate(-50%, -50%);
 
+    font-family: "Asap", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    white-space: nowrap;
 }
-
-
 
 #typeText {
 
