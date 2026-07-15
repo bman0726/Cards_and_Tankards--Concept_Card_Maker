@@ -312,21 +312,42 @@ function updateCardTypeUI(){
 
     subtype.innerHTML="";
 
+    if (subtypeOptions[type] && subtypeOptions[type].length > 0) {
+        subtype.style.display = "block";
+    }
+    else {
+        subtype.style.display = "none";
+    }
 
-    if(subtypeOptions[type] && subtypeOptions[type].length > 0){
 
-        subtypeOptions[type].forEach(item=>{
+        if(subtypeOptions[type] && subtypeOptions[type].length > 0){
 
-            let option=document.createElement("option");
+        subtypeOptions[type].forEach(item => {
 
-            option.value=item;
-            option.textContent=item;
+            let option = document.createElement("option");
+
+            option.value = item;
+            option.textContent = item;
 
             subtype.appendChild(option);
 
         });
 
+        // Default to the first subtype (usually -Generic-)
+        subtype.selectedIndex = 0;
+
+        customSubtypeContainer.style.display = "none";
+        customSubtype.value = "";
+
     }
+    else{
+
+        customSubtypeContainer.style.display = "none";
+        customSubtype.value = "";
+
+    }
+
+    updateText();
 
 }
 
