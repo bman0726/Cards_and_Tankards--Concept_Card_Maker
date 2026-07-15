@@ -105,7 +105,7 @@ textarea {
     left: 250px;
     top: 64px;
 
-    width: 350px;
+    width: 300px;
     height: 50px;
 
     transform: translate(-50%, -50%);
@@ -133,16 +133,37 @@ textarea {
 }
 
 #typeText {
+    position: absolute;
 
-position:absolute;
+    left: 250px;
+    top: 440px;
 
-top:150px;
-width:100%;
+    width: 200px;
+    height: 50px;
 
-font-size:22px;
+    transform: translate(-50%, -50%);
 
+    font-family: "Asap", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    white-space: nowrap;
 }
-
 
 
 #abilityText {
