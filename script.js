@@ -57,6 +57,7 @@ const subtypeOptions = {
         "Crusader Creature",
         "Elemental Creature",
         "Mercenary Creature",
+        "Nomad Creature",
         "Ooze Creature",
         "Pirate Creature",
         "Undead Creature",
