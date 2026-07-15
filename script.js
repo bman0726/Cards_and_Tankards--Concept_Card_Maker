@@ -190,8 +190,13 @@ return text;
 
 function updateText(){
 
+let manaValue = parseInt(mana.value) || 0;
 
-manaText.innerHTML=mana.value;
+if(manaValue > 99){
+    manaValue = 99;
+}
+
+manaText.innerHTML = manaValue;
 
 nameText.innerHTML=nameInput.value || "Unnamed";
 
