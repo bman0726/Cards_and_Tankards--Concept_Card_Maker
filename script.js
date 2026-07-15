@@ -41,6 +41,8 @@ const keywords = [
     "Quickstrike",
     "Ranged",
     "Restless",
+    "Suppress",
+    "Suppressed",
     "Taunt",
     "Unyielding"
 ];
