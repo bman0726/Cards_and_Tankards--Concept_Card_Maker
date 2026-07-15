@@ -22,6 +22,7 @@ const keywords = [
     "Enhance",
     "Enrage",
     "Entrance",
+    "Exhaust",
     "Fetch",
     "Innate",
     "Last Word",
@@ -41,9 +42,11 @@ const keywords = [
     "Quickstrike",
     "Ranged",
     "Restless",
+    "Stunned",
     "Suppress",
     "Suppressed",
     "Taunt",
+    "Unexhaust",
     "Unyielding"
 ];
 
