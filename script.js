@@ -12,6 +12,8 @@ const nameInput = document.getElementById("name");
 const keywords = [
     "Activate",
     "Aftermath",
+    "Attacking",
+    "Blocking",
     "Condition",
     "Deathblow",
     "Devotion",
