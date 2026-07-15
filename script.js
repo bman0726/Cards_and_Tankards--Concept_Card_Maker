@@ -203,6 +203,10 @@ if(manaValue > 99){
     manaValue = 99;
 }
 
+if(manaValue < 0){
+    manaValue = 0;
+}
+
 manaText.innerHTML = manaValue;
 
 nameText.innerHTML=nameInput.value || "Unnamed";
@@ -236,14 +240,26 @@ if(attackValue > 99){
     attackValue = 99;
 }
 
+if(attackValue < 0){
+    attackValue = 0;
+}    
+
 if(healthValue > 99){
     healthValue = 99;
 }
 
+if(healthValue < 0){
+    healthValue = 0;
+}
+    
 if(sparkValue > 99){
     sparkValue = 99;
 }
 
+if(sparkValue < 0){
+    sparkValue = 0;
+}
+    
 attackText.innerHTML = attackValue;
 healthText.innerHTML = healthValue;
 sparkText.innerHTML = sparkValue;
