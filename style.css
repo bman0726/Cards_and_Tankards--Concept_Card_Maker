@@ -236,14 +236,26 @@ font-size:22px;
 
 
 #sparkText {
+    position:absolute;
 
-position:absolute;
+    left:440px;
+    top:415px;
 
-bottom:40px;
+    transform:translate(-50%, -50%);
 
-left:220px;
+    font-family:"Days Sans Black", sans-serif;
+    font-size:45px;
+    font-weight:bold;
 
-font-size:35px;
+    color:white;
 
+    text-shadow:
+        -1px -1px 0 black,
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-
