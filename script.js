@@ -197,7 +197,19 @@ reader.readAsDataURL(this.files[0]);
 };
 
 
+function fitNameText(){
 
+    nameText.style.fontSize = "23px";
+
+    while(
+        nameText.scrollWidth > nameText.clientWidth &&
+        parseInt(nameText.style.fontSize) > 10
+    ){
+        nameText.style.fontSize =
+            (parseInt(nameText.style.fontSize) - 1) + "px";
+    }
+
+}
 
 
 function formatText(text){
@@ -227,6 +239,8 @@ return text;
 
 function updateText(){
 
+abilityCount.innerHTML = ability.value.length + " / 185";
+
 let manaValue = parseInt(mana.value) || 0;
 
 if(manaValue > 99){
@@ -240,6 +254,7 @@ if(manaValue < 0){
 manaText.innerHTML = manaValue;
 
 nameText.innerHTML=nameInput.value || "Unnamed";
+fitNameText();
 
 let selectedSubtype = customSubtype.value || subtype.value;
 
