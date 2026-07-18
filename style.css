@@ -105,6 +105,22 @@ textarea {
     bottom:285px;
 }
 
+
+.statusIcon{
+    width:40px;
+    height:40px;
+}
+
+#statusCheckboxes{
+    display:grid;
+    grid-template-columns: 150px 25px;
+    gap:8px 5px;
+}
+
+#statusCheckboxes label{
+    display:contents;
+}
+
 #manaText {
     position: absolute;
 
