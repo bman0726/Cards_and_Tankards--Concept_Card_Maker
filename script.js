@@ -10,6 +10,8 @@ const customSubtype = document.getElementById("customSubtype");
 const nameInput = document.getElementById("name");
 const attributeContainer = document.getElementById("attributeContainer");
 const checkboxContainer = document.getElementById("attributeCheckboxes");
+const statusCheckboxContainer = document.getElementById("statusCheckboxes");
+const statusContainer = document.getElementById("statusContainer");
 
 const keywords = [
     "Activate",
@@ -58,14 +60,20 @@ const attributes = [
     "Flight",
     "Restless",
     "Unyielding",
-    "Doomed",
     "Ranged",
     "Quickstrike",
     "Pacifist",
     "Backlash",
     "Taunt",
     "Multiblocker",
-    "Loophole"
+    "Loophole",
+]
+const statuses = [
+    "Doomed",
+    "Marked",
+    "Stunned",
+    "Poisoned",
+    "Suppressed"
 ]
 
 const spellAttributes = [
@@ -317,13 +325,55 @@ function createAttributeCheckboxes(){
 
         checkbox.type="checkbox";
         checkbox.value=attribute;
+        checkbox.dataset.type = "attribute";
 
-        checkbox.onchange=updateAttributes;
+        checkbox.onchange=updateIcons;
 
         label.append(attribute);
         label.appendChild(checkbox);
 
         checkboxContainer.appendChild(label);
+
+    });
+
+}
+
+function createStatusCheckboxes(){
+
+    statusCheckboxContainer.innerHTML = "";
+
+    let type = cardType.value;
+
+    let availableStatuses = [];
+
+    if(type === "Creature"){
+        availableStatuses = statuses;
+    }
+
+    else if(type === "Spell"){
+        availableStatuses = spellStatuses;
+    }
+
+    else if(type === "Relic"){
+        availableStatuses = [];
+    }
+
+
+    availableStatuses.forEach(status=>{
+
+        let label=document.createElement("label");
+        let checkbox=document.createElement("input");
+
+        checkbox.type="checkbox";
+        checkbox.value=status;
+        checkbox.dataset.type = "status";
+
+        checkbox.onchange=updateIcons;
+
+        label.append(status);
+        label.appendChild(checkbox);
+
+        statusCheckboxContainer.appendChild(label);
 
     });
 
@@ -350,30 +400,34 @@ link.click();
 
 }
 
-function updateAttributes(){
+function updateIcons(){
 
     attributeContainer.innerHTML="";
 
-    let selected = Array.from(
-        document.querySelectorAll(
-            "#attributeCheckboxes input:checked"
-        )
+    let selected = document.querySelectorAll(
+        "#attributeCheckboxes input:checked, #statusCheckboxes input:checked"
     );
 
     for(let i = selected.length - 1; i >= 0; i--){
 
         let img=document.createElement("img");
 
+        let folder = selected[i].parentElement.parentElement.id === "status"
+            ? "Statuses"
+            : "Attributes";
+
         img.src =
-        "Images/Attributes/" +
+        "Images/" + folder + "/" +
         selected[i].value +
         ".png";
 
-        img.className="attributeIcon";
+        img.className = 
+            folder === "Statuses" 
+            ? "statusIcon" 
+            : "attributeIcon";
 
         attributeContainer.appendChild(img);
     }
-
 }
 
 
@@ -476,8 +530,9 @@ cardType.onchange=function(){
 
     updateLayers();
     updateCardTypeUI();
+    createStatusCheckboxes();
     createAttributeCheckboxes();
-    updateAttributes();
+    updateIcons();
     updateText();
 };
 
@@ -490,9 +545,9 @@ document.querySelectorAll("input,textarea")
 
 });
 
-
+createStatusCheckboxes();
 createAttributeCheckboxes();
 updateLayers();
 updateCardTypeUI();
-updateAttributes();
+updateIcons();
 updateText();
