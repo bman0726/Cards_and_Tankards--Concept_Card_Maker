@@ -60,7 +60,8 @@ const keywords = [
     "Poison",
     "Blocked",
     "Acumen",
-    "Banished"
+    "Banished",
+    "Wounded"
 ];
 
 const attributes = [
