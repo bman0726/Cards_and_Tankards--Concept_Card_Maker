@@ -41,13 +41,11 @@ textarea {
 
 
 
-#card {
-
+#card{
     position:relative;
 
-    width:500px;
-    height:700px;
-
+    width:min(500px, 95vw);
+    aspect-ratio:5/7;
 }
 
 
