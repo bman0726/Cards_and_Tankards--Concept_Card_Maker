@@ -51,7 +51,9 @@ const keywords = [
     "Suppressed",
     "Taunt",
     "Unexhaust",
-    "Unyielding"
+    "Unyielding",
+    "Different",
+    "Doomed",
 ];
 
 const attributes = [
