@@ -56,8 +56,10 @@ const keywords = [
     "Doomed",
     "Sacrificed",
     "Mark",
+    "Marked",
     "Poison",
-    "Blocked"
+    "Blocked",
+    "Acumen"
 ];
 
 const attributes = [
