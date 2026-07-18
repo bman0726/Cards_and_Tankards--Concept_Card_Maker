@@ -45,11 +45,19 @@
 
 
 
-<h2>Text</h2>
+<h2>Card Info</h2>
 
-<input id="mana" placeholder="Mana Cost">
+<hr>
 
-<input id="name" placeholder="Card Name">
+<input id="name" 
+placeholder="Card Name"
+maxlength="65"
+>
+
+<input id="mana"
+placeholder="Mana Cost"
+maxlength="2"
+>
 
 <select id="subtype"></select>
 
@@ -60,16 +68,28 @@
 
 <div id="creatureStats">
 
-<input id="attack" placeholder="Attack">
+<input
+id="attack"
+placeholder="Attack"
+maxlength="2"
+>
 
-<input id="health" placeholder="Health">
+<input 
+id="health"
+placeholder="Health"
+maxlength="2"
+>
 
 </div>
 
 
 <div id="relicStats">
 
-<input id="sparks" placeholder="Sparks">
+<input 
+id="sparks" 
+placeholder="Sparks"
+maxlength="2"
+>
 
 </div>
 
@@ -82,8 +102,14 @@
 <div id="statusCheckboxes"></div>
 <hr>
 
-<textarea id="ability" placeholder="Ability Text (Use *Ability* to Bold and Underline keywords)"></textarea>
+<textarea
+    id="ability" 
+    maxlength="185"
+    placeholder="Ability Text (Use *Ability* to Bold and Underline keywords)"></textarea>
+    <div id="abilityCount">0 / 185</div>
+</textarea>
 
+<hr>
 
 <button onclick="downloadCard()">
 Export Card
@@ -105,8 +131,8 @@ Export Card
 <img id="typeLayer" class="layer">
 
 
-<div id="manaText"></div>
 <div id="nameText"></div>
+<div id="manaText"></div>
 <div id="typeText"></div>
 <div id="abilityText">
     <div id="abilityContent"></div>
