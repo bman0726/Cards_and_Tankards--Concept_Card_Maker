@@ -54,6 +54,8 @@ const keywords = [
     "Unyielding",
     "Different",
     "Doomed",
+    "Sacrificed",
+    "Marked"
 ];
 
 const attributes = [
