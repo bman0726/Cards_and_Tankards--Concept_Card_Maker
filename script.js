@@ -61,7 +61,9 @@ const keywords = [
     "Blocked",
     "Acumen",
     "Banished",
-    "Wounded"
+    "Wounded",
+    "Primary Faction Zone",
+    "Secondary Faction Zone"
 ];
 
 const attributes = [
