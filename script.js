@@ -1,4 +1,3 @@
-
 const factionLayer=document.getElementById("factionLayer");
 const rarityLayer=document.getElementById("rarityLayer");
 const typeLayer=document.getElementById("typeLayer");
@@ -571,6 +570,43 @@ document.querySelectorAll("input,textarea")
     e.addEventListener("change", updateText);
 
 });
+
+function resetCard(){
+    if(!confirm("Are you sure you want to reset the card? All unsaved changes will be lost!")){
+        return;
+    }
+
+    document.querySelectorAll("input, textarea").forEach(input=>{
+        if(input.type==="checkbox"){
+            input.checked=false;
+        }
+        else if(input.type==="file"){
+            input.value="";
+        }        
+        else{
+            input.value="";
+        }
+    });
+
+    faction.value="Neutral";
+    rarity.value="Common";
+    cardType.value="Creature";
+
+    art.src = "Images/Placeholder Image.png";
+
+    updateLayers();
+    updateCardTypeUI();
+
+    createAttributeCheckboxes();
+    createStatusCheckboxes();
+
+    updateIcons();
+
+    updateAttributes();
+    updateStatuses();
+
+    updateText();
+}
 
 createStatusCheckboxes();
 createAttributeCheckboxes();
