@@ -1,3 +1,4 @@
+
 const factionLayer=document.getElementById("factionLayer");
 const rarityLayer=document.getElementById("rarityLayer");
 const typeLayer=document.getElementById("typeLayer");
@@ -10,7 +11,27 @@ const nameInput = document.getElementById("name");
 const attributeContainer = document.getElementById("attributeContainer");
 const checkboxContainer = document.getElementById("attributeCheckboxes");
 const statusCheckboxContainer = document.getElementById("statusCheckboxes");
-const statusContainer = document.getElementById("statusContainer");
+const imageStatus = document.getElementById("imageStatus");
+
+/* Explicit DOM references to avoid relying on implicit globals */
+const faction = document.getElementById("faction");
+const rarity = document.getElementById("rarity");
+const cardType = document.getElementById("cardType");
+const cardImage = document.getElementById("cardImage");
+const art = document.getElementById("art");
+const mana = document.getElementById("mana");
+const manaText = document.getElementById("manaText");
+const ability = document.getElementById("ability");
+const abilityCount = document.getElementById("abilityCount");
+const attack = document.getElementById("attack");
+const health = document.getElementById("health");
+const sparks = document.getElementById("sparks");
+const nameText = document.getElementById("nameText");
+const typeText = document.getElementById("typeText");
+const abilityContent = document.getElementById("abilityContent");
+const attackText = document.getElementById("attackText");
+const healthText = document.getElementById("healthText");
+const sparkText = document.getElementById("sparkText");
 
 const keywords = [
     "Activate",
@@ -88,8 +109,23 @@ const statuses = [
 ]
 
 const spellAttributes = [
+    "Amped",
+    "Armored",
+    "Flight",
+    "Restless",
+    "Unyielding",
+    "Ranged",
+    "Quickstrike",
+    "Pacifist",
+    "Backlash",
+    "Taunt",
+    "Multiblocker",
+    "Loophole",
+]
+
+const spellStatuses = [
     "Doomed"
-];
+]
 
 const subtypeOptions = {
 
@@ -189,23 +225,25 @@ updateLayers();
 
 
 
+let currentImage = "";
 
-cardImage.onchange=function(){
+cardImage.onchange = function () {
 
+    if(!this.files || !this.files[0]) return;
 
-let reader=new FileReader();
+    let reader = new FileReader();
 
+    reader.onload = function(e){
 
-reader.onload=function(e){
+        currentImage = e.target.result;
+        art.src = currentImage;
 
-art.src=e.target.result;
+        imageStatus.innerHTML = "Image loaded";
+    }
 
-}
-
-
-reader.readAsDataURL(this.files[0]);
-
+    reader.readAsDataURL(this.files[0]);
 };
+
 
 
 function fitNameText(){
@@ -407,24 +445,140 @@ function createStatusCheckboxes(){
 
 function downloadCard(){
 
+    console.log("Export clicked");
 
-html2canvas(document.querySelector("#card"))
-.then(canvas=>{
+    html2canvas(document.querySelector("#card"))
+    .then(canvas=>{
 
+        console.log("Canvas created");
 
-let link=document.createElement("a");
+        let link=document.createElement("a");
 
-link.download="card.png";
+        link.download="card.png";
+        link.href=canvas.toDataURL();
 
-link.href=canvas.toDataURL();
+        link.click();
 
-link.click();
-
-
-});
-
+    })
+    .catch(error=>{
+        console.log("Export error:", error);
+    });
 
 }
+
+function saveCard(){
+
+    console.log("here is the name");
+    console.log(nameInput.value);
+
+    const card = {
+
+        name: nameInput.value,
+        mana: mana.value,
+        faction: faction.value,
+        rarity: rarity.value,
+        type: cardType.value,
+        subtype: subtype.value,
+        customSubtype: customSubtype.value,
+
+        attack: attack.value,
+        health: health.value,
+        sparks: sparks.value,
+
+        ability: ability.value,
+
+        image: currentImage,
+
+        attributes: Array.from(
+            document.querySelectorAll("#attributeCheckboxes input:checked")
+        ).map(box => box.value),
+
+        statuses: Array.from(
+            document.querySelectorAll("#statusCheckboxes input:checked")
+        ).map(box => box.value)
+
+    };
+
+    console.log(JSON.stringify(card, null, 2));
+
+    const blob = new Blob(
+        [JSON.stringify(card, null, 2)],
+        {type:"application/json"}
+    );
+
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = (card.name || "Card") + ".ctcard";
+
+    link.click();
+}
+
+function loadCard(event) {
+    console.log("Open Card Button Selected");
+
+    let file = event.target.files[0];
+
+    let reader = new FileReader();
+
+    reader.onload = function(e) {
+        let data = JSON.parse(e.target.result);
+        console.log(data);
+
+        // Text fields
+        mana.value = data.mana;
+        nameInput.value = data.name;
+        ability.value = data.ability;
+
+        // Dropdowns
+        faction.value = data.faction;
+        rarity.value = data.rarity;
+        cardType.value = data.type;
+
+        updateCardTypeUI();
+
+        subtype.value = data.subtype || "";
+
+        if (data.customSubtype) {
+            customSubtype.value = data.customSubtype;
+            customSubtypeContainer.style.display = "flex";
+        }
+
+        // Stats
+        attack.value = data.attack;
+        health.value = data.health;
+        sparks.value = data.sparks;
+
+        // Image
+        if (data.image) {
+            currentImage = data.image;
+            art.src = data.image;
+            imageStatus.innerHTML = "Image loaded";
+        }
+
+        // Update everything
+        updateLayers();
+        createStatusCheckboxes();
+        createAttributeCheckboxes();
+        document.querySelectorAll("#attributeCheckboxes input").forEach(box => {
+            if (data.attributes && data.attributes.includes(box.value)) {
+                box.checked = true;
+            }
+        });
+
+        document.querySelectorAll("#statusCheckboxes input").forEach(box => {
+            if (data.statuses && data.statuses.includes(box.value)) {
+                box.checked = true;
+            }
+        });
+
+        updateText();
+        updateIcons();
+    };
+
+    reader.readAsText(file);
+}
+
 
 function updateIcons(){
 
@@ -438,19 +592,12 @@ function updateIcons(){
 
         let img=document.createElement("img");
 
-        let folder = selected[i].parentElement.parentElement.id === "status"
-            ? "Statuses"
-            : "Attributes";
+        // Status icon files are stored in Images/Attributes; use that folder for both
+        let folder = "Attributes";
 
-        img.src =
-        "Images/" + folder + "/" +
-        selected[i].value +
-        ".png";
+        img.src = `Images/${folder}/${selected[i].value}.png`;
 
-        img.className = 
-            folder === "Statuses" 
-            ? "statusIcon" 
-            : "attributeIcon";
+        img.className = selected[i].dataset.type === "status" ? "statusIcon" : "attributeIcon";
 
         attributeContainer.appendChild(img);
     }
@@ -601,12 +748,10 @@ function resetCard(){
     createStatusCheckboxes();
 
     updateIcons();
-
-    updateAttributes();
-    updateStatuses();
-
     updateText();
 }
+
+document.getElementById("loadCard").onchange = loadCard;
 
 createStatusCheckboxes();
 createAttributeCheckboxes();
