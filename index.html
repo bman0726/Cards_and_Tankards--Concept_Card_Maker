@@ -1,162 +1,130 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cards & Tankards Concept Card Maker</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Cards & Tankards Concept Card Maker</h1>
+    <h1>Cards & Tankards Concept Card Maker</h1>
 
-<div class="container">
+    <div class="container">
 
-<div class="controls">
+        <div class="controls">
 
-<h2>Card Image</h2>
-<input type="file" id="cardImage" accept="image/*">
+            <h2>Card Image</h2>
+            <input type="file" id="cardImage" accept="image/*" aria-label="Upload card image">
+            <div id="imageStatus"></div>
 
+            <h2>Faction</h2>
+            <select id="faction" aria-label="Select faction">
+                <option value="Neutral">Neutral</option>
+                <option value="AO">Augur Order</option>
+                <option value="PG">Plundering Guild</option>
+                <option value="DM">Dungeon Master</option>
+                <option value="WH">Wild Horde</option>
+            </select>
 
-<h2>Faction</h2>
-<select id="faction">
-    <option value="Neutral">Neutral</option>
-    <option value="AO">Augur Order</option>
-    <option value="PG">Plundering Guild</option>
-    <option value="DM">Dungeon Master</option>
-    <option value="WH">Wild Horde</option>
-</select>
+            <h2>Rarity</h2>
+            <select id="rarity" aria-label="Select rarity">
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Legendary">Legendary</option>
+            </select>
 
+            <h2>Card Type</h2>
+            <select id="cardType" aria-label="Select card type">
+                <option value="Creature">Creature</option>
+                <option value="Spell">Spell</option>
+                <option value="Relic">Relic</option>
+            </select>
 
-<h2>Rarity</h2>
-<select id="rarity">
-    <option value="Common">Common</option>
-    <option value="Uncommon">Uncommon</option>
-    <option value="Rare">Rare</option>
-    <option value="Legendary">Legendary</option>
-</select>
+            <h2>Card Info</h2>
+            <hr>
 
+            <label for="name">Card Name</label>
+            <input id="name" placeholder="Card Name" maxlength="65" aria-label="Enter card name">
 
-<h2>Card Type</h2>
-<select id="cardType">
-    <option value="Creature">Creature</option>
-    <option value="Spell">Spell</option>
-    <option value="Relic">Relic</option>
-</select>
+            <label for="mana">Mana Cost</label>
+            <input id="mana" placeholder="Mana Cost" maxlength="2" aria-label="Enter mana cost">
 
+            <label for="subtype">Subtype</label>
+            <select id="subtype" aria-label="Select subtype"></select>
 
+            <div id="customSubtypeContainer" style="display:none;">
+                <label for="customSubtype">Custom Subtype</label>
+                <input id="customSubtype" type="text" placeholder="Custom Subtype" aria-label="Enter custom subtype">
+            </div>
 
-<h2>Card Info</h2>
+            <div id="creatureStats">
+                <label for="attack">Attack</label>
+                <input id="attack" placeholder="Attack" maxlength="2" aria-label="Enter attack">
 
-<hr>
+                <label for="health">Health</label>
+                <input id="health" placeholder="Health" maxlength="2" aria-label="Enter health">
+            </div>
 
-<input id="name" 
-placeholder="Card Name"
-maxlength="65"
->
+            <div id="relicStats">
+                <label for="sparks">Sparks</label>
+                <input id="sparks" placeholder="Sparks" maxlength="2" aria-label="Enter sparks">
+            </div>
 
-<input id="mana"
-placeholder="Mana Cost"
-maxlength="2"
->
+            <hr>
+            <h3>Attributes</h3>
+            <div id="attributeCheckboxes"></div>
+            <hr>
 
-<select id="subtype"></select>
+            <h3>Statuses</h3>
+            <div id="statusCheckboxes"></div>
+            <hr>
 
-<div id="customSubtypeContainer" style="display:none;">
-    <label>Custom Subtype</label>
-    <input id="customSubtype" type="text" placeholder="Custom Subtype">
-</div>    
+            <textarea id="ability" maxlength="185" placeholder="Ability Text (Use *Ability* to Bold and Underline keywords)" aria-label="Enter ability text"></textarea>
+            <div id="abilityCount">0 / 185</div>
 
-<div id="creatureStats">
+            <hr>
 
-<input
-id="attack"
-placeholder="Attack"
-maxlength="2"
->
+            <button onclick="saveCard()">Export .ctcard File</button>
 
-<input 
-id="health"
-placeholder="Health"
-maxlength="2"
->
+            <input type="file" id="loadCard" accept=".ctcard" style="display:none;" aria-label="Load card file">
 
-</div>
+            <button onclick="document.getElementById('loadCard').click()">Open .ctcard File</button>
 
+            <hr>
 
-<div id="relicStats">
+            <button onclick="downloadCard()">Download Card Image</button>
 
-<input 
-id="sparks" 
-placeholder="Sparks"
-maxlength="2"
->
+            <button onclick="resetCard()">Reset Card</button>
 
-</div>
+        </div>
 
-<hr>
-<h3>Attributes</h3>
-<div id="attributeCheckboxes"></div>
-<hr>
+        <div id="card">
+            <img id="art" src="Images/Placeholder Image.png" alt="Card Art">
+            <img class="layer" src="Images/Card Base Overlay.png" alt="Card Base Overlay">
+            <img id="factionLayer" class="layer" alt="Faction Layer">
+            <img id="rarityLayer" class="layer" alt="Rarity Layer">
+            <img id="typeLayer" class="layer" alt="Type Layer">
 
-<h3>Statuses</h3>
-<div id="statusCheckboxes"></div>
-<hr>
+            <div id="nameText" aria-label="Card Name"></div>
+            <div id="manaText" aria-label="Mana Cost"></div>
+            <div id="typeText" aria-label="Card Type"></div>
+            <div id="abilityText">
+                <div id="abilityContent" aria-label="Ability Text"></div>
+            </div>
 
-<textarea
-    id="ability" 
-    maxlength="185"
-    placeholder="Ability Text (Use *Ability* to Bold and Underline keywords)"></textarea>
-    <div id="abilityCount">0 / 185</div>
-</textarea>
+            <div id="attackText" aria-label="Attack"></div>
+            <div id="healthText" aria-label="Health"></div>
+            <div id="sparkText" aria-label="Sparks"></div>
 
-<hr>
+            <div id="attributeContainer" aria-label="Attributes"></div>
+        </div>
 
-<button onclick="downloadCard()">
-Export Card
-</button>
+    </div>
 
-<button onclick="resetCard()">
-    Reset Card
-</button>
-
-
-</div>
-
-<div id="card">
-
-<img id="art" src="Images/Placeholder Image.png">
-
-<img class="layer" src="Images/Card Base Overlay.png">
-
-<img id="factionLayer" class="layer">
-
-<img id="rarityLayer" class="layer">
-
-<img id="typeLayer" class="layer">
-
-
-<div id="nameText"></div>
-<div id="manaText"></div>
-<div id="typeText"></div>
-<div id="abilityText">
-    <div id="abilityContent"></div>
-</div>
-
-<div id="attackText"></div>
-<div id="healthText"></div>
-<div id="sparkText"></div>
-
-<div id="attributeContainer"></div>
-
-</div>
-
-
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
